@@ -11,7 +11,6 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.ViewModelProvider
 import by.matthewvirus.geoquiz.R
 import by.matthewvirus.geoquiz.viewModel.QuizViewModel
-import by.matthewvirus.geoquiz.model.Cheat.hints
 
 private const val KEY_INDEX = "index"
 
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         if (it.resultCode == Activity.RESULT_OK) {
             quizViewModel.isCheater = it.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
             cheatUsedQuestions += quizViewModel.currentIndex
-            hints--
+            quizViewModel.hints--
             updateHintsNumber()
         }
     }
@@ -90,8 +89,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateHintsNumber() {
-        hintsNumberTextView.setText(hints.toString())
-        if (hints == 0)
+        hintsNumberTextView.text = quizViewModel.hints.toString()
+        if (quizViewModel.hints == 0)
             changeButtonState(cheatButton, false)
     }
 
