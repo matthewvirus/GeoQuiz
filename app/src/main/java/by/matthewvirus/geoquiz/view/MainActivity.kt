@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.ViewModelProvider
 import by.matthewvirus.geoquiz.R
 import by.matthewvirus.geoquiz.viewModel.QuizViewModel
@@ -60,10 +61,11 @@ class MainActivity : AppCompatActivity() {
                 getResult()
         }
 
-        cheatButton.setOnClickListener {
+        cheatButton.setOnClickListener { view ->
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this, answerIsTrue)
-            getResult.launch(intent)
+            val options = ActivityOptionsCompat.makeClipRevealAnimation(view, 0, 0, view.width, view.height)
+            getResult.launch(intent, options)
         }
 
         updateQuestion()
