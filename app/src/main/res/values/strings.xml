@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">GeoQuiz</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+
+    <string name="question_first">Minsk is the oldest city in Belarus.</string>
+    <string name="question_second">LA is Nevada state unit.</string>
+    <string name="question_third">Pacific ocean isn\'t pacific.</string>
+    <string name="question_fourth">Belgium is a kingdom.</string>
+    <string name="question_fifth">
+        England, Wales, Scotland and Northern Ireland are parts of The UK.
+    </string>
+
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+    <string name="next_button">Next</string>
+    <string name="next_question">Next question</string>
+
+    <string name="warning_text">Are you sure to get answer?</string>
+    <string name="show_answer_button">Show Answer!</string>
+    <string name="cheat_button">Cheat!</string>
+    <string name="judgement_toast">Cheating is your bad!</string>
+</resources>
