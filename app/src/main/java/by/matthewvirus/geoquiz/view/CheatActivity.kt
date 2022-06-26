@@ -17,6 +17,7 @@ private const val EXTRA_ANSWER_IS_TRUE = "by.matthewvirus.geoquiz.answer_is_true
 class CheatActivity : AppCompatActivity() {
 
     private lateinit var answerTextView: TextView
+    private lateinit var apiVersionTextView: TextView
     private lateinit var showAnswerButton: Button
 
     private var answerIsTrue = false
@@ -33,6 +34,9 @@ class CheatActivity : AppCompatActivity() {
 
         answerTextView = findViewById(R.id.right_answer_text)
         showAnswerButton = findViewById(R.id.show_answer_button)
+        apiVersionTextView = findViewById(R.id.api_version_text)
+
+        apiVersionTextView.text = resources.getString(R.string.api_text, cheatViewModel.apiVersion)
 
         showAnswerButton.setOnClickListener {
             answerTextViewSetText()

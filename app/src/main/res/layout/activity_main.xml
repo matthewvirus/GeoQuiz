@@ -39,19 +39,35 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/cheat_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cheat_button"
-        android:contentDescription="@string/cheat_button" />
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/next_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next_button"
-        android:drawableEnd="@drawable/ic_next_question"
-        android:contentDescription="@string/next_question" />
+        <Button
+            android:id="@+id/cheat_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cheat_button"
+            android:contentDescription="@string/cheat_button" />
+
+        <TextView
+            android:id="@+id/hints_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Hints number."/>
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_button"
+            android:drawableEnd="@drawable/ic_next_question"
+            android:contentDescription="@string/next_question" />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

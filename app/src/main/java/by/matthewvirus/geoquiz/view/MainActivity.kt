@@ -11,6 +11,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.ViewModelProvider
 import by.matthewvirus.geoquiz.R
 import by.matthewvirus.geoquiz.viewModel.QuizViewModel
+import by.matthewvirus.geoquiz.model.Cheat.hints
 
 private const val KEY_INDEX = "index"
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nextButton: Button
     private lateinit var cheatButton: Button
     private lateinit var questionTextView: TextView
+    private lateinit var hintsNumberTextView: TextView
 
     private var answers = 0
     private var rightAnswers = 0
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         nextButton = findViewById(R.id.next_button)
         cheatButton = findViewById(R.id.cheat_button)
         questionTextView = findViewById(R.id.question_text_view)
+        hintsNumberTextView = findViewById(R.id.hints_number_text)
 
         quizViewModel.currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
 
@@ -69,18 +72,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateQuestion()
+        updateHintsNumber()
     }
 
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK) {
             quizViewModel.isCheater = it.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
             cheatUsedQuestions += quizViewModel.currentIndex
+            hints--
+            updateHintsNumber()
         }
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
         savedInstanceState.putInt(KEY_INDEX, quizViewModel.currentIndex)
+    }
+
+    private fun updateHintsNumber() {
+        hintsNumberTextView.setText(hints.toString())
+        if (hints == 0)
+            changeButtonState(cheatButton, false)
     }
 
     private fun updateQuestion() {
@@ -110,6 +122,10 @@ class MainActivity : AppCompatActivity() {
         answers = 0
         rightAnswers = 0
         Toast.makeText(this, "Your score is ${result.toInt()}%", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun changeButtonState(button: Button, flag: Boolean) {
+        button.isEnabled = flag
     }
 
     private fun changeButtonState(button: Button, button1: Button, flag: Boolean) {
