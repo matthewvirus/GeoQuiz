@@ -1,5 +1,5 @@
 # GeoQuiz
-<i>An application based on MVVM pattern.</i>
+<i>An application based on MVC pattern.</i>
 
 This is an application from Android Programming: The Big Nerd Ranch Guide book.
 I tried to do all the excercises while reading this book. 
